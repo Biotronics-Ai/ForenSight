@@ -10,7 +10,7 @@ authors = [{ name = "Onur Kavrik" }]
 maintainers = [{ name = "Biotronics Ai" }]
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT-License" }
+license = { text = "MIT" }
 urls = { Homepage = "https://biotronics.ai" }
 dependencies = [
     "aiofiles==25.1.0",
@@ -39,9 +39,7 @@ py-modules = [
     "parsers",
     "kernel",
     "visualize",
-    "utils",
     "base",
-    "__main__",
 ]
 
 [tool.setuptools.package-data]

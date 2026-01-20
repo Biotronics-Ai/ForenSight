@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/Bio%20(Yeni%20LinkedIn%20Banner'%C4%B1).png" alt="Biotronics Ai Banner">
+  <img src="images/banner.png" alt="Biotronics Ai">
 </p>
 # Forensight
 
@@ -305,6 +305,6 @@ We value all kinds of contributions to the projects but the
 
 <p align="center">
   <a href="https://biotronics.ai">
-    <img src="images/Bio%20kopyas%C4%B1.png" alt="Biotronics Ai Logo" width="180">
+    <img src="images/logo.png" alt="Biotronics Ai Logo" width="180">
   </a>
 </p>
