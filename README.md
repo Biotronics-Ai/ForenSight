@@ -50,12 +50,11 @@ Dependencies are defined in `pyproject.toml` / `requirements.txt`.
 - `models.py` — parsers factory, loader, matchers, comparators, STR search.
 - `parsers.py` — file-format parsers (async batch, N-stripping).
 - `visualize.py` — CSV visualizers (HID/ABI/FSA), band visualizer.
-- `test.py` — runnable scenarios (pipelines, visualizers, STR search).
 - `base.py` — base components/logging helpers.
 - `data_samples/` — sample data paths expected by `test.py` (adjust as needed).
 - `mem_map/`, `logs/` — runtime outputs (ignored by git).
 
-## Quick start 
+## Quick start
 
 ## Core usage examples (and real-world analogues)
 
@@ -80,7 +79,7 @@ print("cosine-like similarity:", sim)
 
 _Real life_: Basic “are these two references the same?” QC, or comparing two assemblies of the same chromosome.
 
-### 2) Multi-sample elimination to find the closest match 
+### 2) Multi-sample elimination to find the closest match
 
 Use when you have one target and a pool of candidates (all sequence formats). The matcher samples loci, eliminates weak candidates with Wilson intervals, and returns the best; then you can stream a full comparison against the winner. Keep `memmap_dir` set for all loaders.
 
@@ -125,7 +124,7 @@ print("best match across mixed formats:", best)
 
 _Real life_: Compare a reference contig (FASTA) against sequencing reads (FASTQ) and a legacy SEQ file in one pass, without pre-conversion steps.
 
-### 3) STR sliding-window search 
+### 3) STR sliding-window search
 
 Use when you need to find the most similar occurrence of a short STR pattern across multiple sequences.
 
