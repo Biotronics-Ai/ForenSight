@@ -1,0 +1,9 @@
+include README.md
+include requirements.txt
+recursive-include images *
+
+# Exclude build artifacts and envs
+prune .venv
+prune build
+prune dist
+prune __pycache__

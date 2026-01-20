@@ -1,0 +1,25 @@
+# Bytecode / cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environments
+.venv/
+env/
+
+# Build / packaging
+dist/
+build/
+*.egg-info/
+
+# Local data and outputs
+logs/
+mem_map/
+data_samples/
+*.mm
+*.webp
+*.csv
+
+# OS cruft
+.DS_Store
+Thumbs.db

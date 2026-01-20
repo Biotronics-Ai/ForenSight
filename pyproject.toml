@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ForenSight"
+version = "0.1.0"
+description = "Asynchronous genomic comparison and visualization toolkit to perform on local devices(parsers, loaders, matchers, visualizers)."
+authors = [{ name = "Onur Kavrik" }]
+maintainers = [{ name = "Biotronics Ai" }]
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT-License" }
+urls = { Homepage = "https://biotronics.ai" }
+dependencies = [
+    "aiofiles==25.1.0",
+    "argcomplete==3.6.3",
+    "argh==0.31.3",
+    "biopython==1.86",
+    "gffutils==0.13",
+    "numpy==2.3.4",
+    "packaging==25.0",
+    "pillow==12.0.0",
+    "psutil==7.1.3",
+    "pyBigWig==0.3.24",
+    "pyfaidx==0.9.0.3",
+    "pysam==0.23.3",
+    "simplejson==3.20.2",
+    "bx-python",  # for WIG/BigWig parsing
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "ruff"]
+
+[tool.setuptools]
+py-modules = [
+    "forensight",
+    "models",
+    "parsers",
+    "kernel",
+    "visualize",
+    "utils",
+    "base",
+    "__main__",
+]
+
+[tool.setuptools.package-data]
+"*" = ["images/*"]
