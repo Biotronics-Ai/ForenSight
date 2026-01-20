@@ -55,27 +55,7 @@ Dependencies are defined in `pyproject.toml` / `requirements.txt`.
 - `data_samples/` — sample data paths expected by `test.py` (adjust as needed).
 - `mem_map/`, `logs/` — runtime outputs (ignored by git).
 
-## Quick start (scenarios)
-
-Edit `test.py` and uncomment the scenarios you want, then:
-
-```bash
-source .venv/bin/activate
-python test.py
-```
-
-Scenarios (toggle in `main()`):
-
-- `scenario1..5` — sequence comparison pipelines (SampleLoader → SequenceMatcher/DoubleSampleComparator).
-- `scenario_hid` — HID → CSVs.
-- `scenario_abi` — ABI/AB1 → CSVs.
-- `scenario_fsa` — FSA → CSVs.
-- `scenario_str_searcher` — sliding-window STR search across FASTA files.
-
-Outputs land in `logs/`:
-
-- HID/ABI/FSA: `{name}.csv` (peaks), `{name}.trace.csv` (PLOC/DATA/PBAS), `{name}.excluded.csv` (other fields), optional `{name}.aprx.csv/.xml` (APrX1).
-- Band visualizer: WEBP tiles (if used) and optional metadata CSV.
+## Quick start 
 
 ## Core usage examples (and real-world analogues)
 
@@ -100,7 +80,7 @@ print("cosine-like similarity:", sim)
 
 _Real life_: Basic “are these two references the same?” QC, or comparing two assemblies of the same chromosome.
 
-### 2) Multi-sample elimination to find the closest match (scenario2/3/4)
+### 2) Multi-sample elimination to find the closest match 
 
 Use when you have one target and a pool of candidates (all sequence formats). The matcher samples loci, eliminates weak candidates with Wilson intervals, and returns the best; then you can stream a full comparison against the winner. Keep `memmap_dir` set for all loaders.
 
@@ -122,7 +102,7 @@ sim = await comp.compare_stream("target.fa", winner, batch_size=16384)
 print("best:", winner, "similarity:", sim)
 ```
 
-_Real life_: Pick the closest specimen in a large archive to a query genome/contig, without loading everything into RAM.
+_Real life_: Pick the closest specimen in a large archive to a query genome/contig, without loading everything into RAM. And verify the comparison with cosine similarity to ensure the precision with highest confidence.
 
 ### 2b) Mixed sequence formats handled seamlessly
 
@@ -145,7 +125,7 @@ print("best match across mixed formats:", best)
 
 _Real life_: Compare a reference contig (FASTA) against sequencing reads (FASTQ) and a legacy SEQ file in one pass, without pre-conversion steps.
 
-### 3) STR sliding-window search (scenario_str_searcher)
+### 3) STR sliding-window search 
 
 Use when you need to find the most similar occurrence of a short STR pattern across multiple sequences.
 
@@ -157,7 +137,7 @@ result = await searcher.search("ATGCTAGCTA", ["genome1.fa", "genome2.fa"])
 print(result)  # file, position, substring, similarity
 ```
 
-_Real life_: Forensic STR probe search across multiple chromosomes/assemblies; finds best match even with minor mismatches.
+_Real life_: Forensic STR probe search across multiple chromosomes/assemblies; finds best match with error resistant computation.
 
 ### 4) HID/ABI/FSA to CSV (and optional WEBP traces)
 
@@ -202,7 +182,7 @@ _Real life_: Inspect electropherogram channel intensities quickly without heavy 
 
 ### 6) Kernel matrix (memmap) with and without saved vectors/ids
 
-Use when you want a reusable kernel over many samples. Always set `memmap_dir` and `logs_dir`.
+Please note that this is the **fastest and memory-heaviest** solution you can use. Usage with additional validation with cosine similarity (DoubleSampleComparator) **is highly recommended**. Use when you want a reusable kernel over large amount of samples. Always set `memmap_dir` and `logs_dir`.
 
 ```python
 from forensight import KernelMatrix, DNASample
