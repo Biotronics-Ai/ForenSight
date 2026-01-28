@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ForenSight"
-version = "0.1.1"
+version = "0.1.2"
 description = "Asynchronous genomic comparison and visualization toolkit to perform on local devices(parsers, loaders, matchers, visualizers)."
 authors = [{ name = "Onur Kavrik" }]
 maintainers = [{ name = "Biotronics Ai" }]
