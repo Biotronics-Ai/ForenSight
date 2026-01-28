@@ -1,11 +1,13 @@
 <p align="center">
   <img src="images/banner.png" alt="Biotronics Ai">
 </p>
-# Forensight
 
 # *ForenSight*
 
 An open-source toolkit for forensic genomic comparison and data storage, built by Biotronics AI. It streams large files, minimizes RAM with memory mapping, surfaces rich logging, and runs locally for forensic/genomic analysis.
+
+
+You can view the research paper that explains the pipeline and math in detail [here](https://zenodo.org/records/18395939).
 
 **What it delivers in practice?**
 
